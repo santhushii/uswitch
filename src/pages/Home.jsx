@@ -13,28 +13,28 @@ export default function Home() {
       title: "Broadband Deals That Save You More",
       description:
         "Compare top broadband providers and enjoy faster internet for less.",
-      img: "https://images.pexels.com/photos/2881232/pexels-photo-2881232.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1", // sleek fiber optics
+      img: "https://images.pexels.com/photos/2881232/pexels-photo-2881232.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1",
       button: "Compare Broadband",
     },
     {
       title: "SIM Only Plans with Big Savings",
       description:
         "Flexible monthly contracts designed for your data and budget.",
-      img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1", // clean SIM card close-up
+      img: "https://images.pexels.com/photos/1054389/pexels-photo-1054389.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1",
       button: "View SIM Deals",
     },
     {
       title: "Latest Mobile Phone Offers",
       description:
         "Get the latest smartphones with plans that suit your lifestyle.",
-      img: "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1", // premium smartphone close-up
+      img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1",
       button: "Shop Mobile Phones",
     },
     {
       title: "Travel Connectivity, Anywhere",
       description:
         "Stay connected while abroad with affordable travel data plans.",
-      img: "https://images.pexels.com/photos/723240/pexels-photo-723240.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1", // airplane wing / travel shot
+      img: "https://images.pexels.com/photos/723240/pexels-photo-723240.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1",
       button: "Explore Travel Plans",
     },
   ];
@@ -100,6 +100,17 @@ export default function Home() {
           >
             {slides[index].button}
           </motion.a>
+          {/* SIM Card Image (added) */}
+          {index === 1 && (
+            <motion.img
+              src="https://cdn-icons-png.flaticon.com/512/104/104454.png"
+              alt="SIM Card"
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              className="mt-8 w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-lg"
+            />
+          )}
         </div>
 
         {/* Dots */}
@@ -169,24 +180,24 @@ export default function Home() {
             {[
               {
                 title: "Switch energy & save",
-                img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1", // clean light bulb
+                img: "https://images.pexels.com/photos/236089/pexels-photo-236089.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&dpr=1",
               },
               {
                 title: "Beat broadband hikes",
-                img: "https://images.pexels.com/photos/2881232/pexels-photo-2881232.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&dpr=1", // fiber optics close-up
+                img: "https://images.pexels.com/photos/2881232/pexels-photo-2881232.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&dpr=1",
               },
               {
                 title: "Go SIM-only & save",
-                img: "https://images.pexels.com/photos/1054389/pexels-photo-1054389.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&dpr=1", // minimal SIM card
+                img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1",
               },
-            ].map(({ title, img }) => (
+            ].map(({ title, img }, i) => (
               <motion.article
                 key={title}
-                variants={revealVariant}
-                initial="hidden"
-                whileInView="visible"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
                 viewport={{ once: true }}
-                className="rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition"
+                className="rounded-2xl overflow-hidden bg-white shadow-sm transform transition-all duration-500 hover:shadow-xl hover:scale-105 border-gradient"
               >
                 <img src={img} alt={title} className="h-44 w-full object-cover" />
                 <div className="p-5">
